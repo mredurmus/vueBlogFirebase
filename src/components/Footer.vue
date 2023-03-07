@@ -137,7 +137,7 @@ footer {
                 }
                 .link {
                     font-size: 16px;
-                    font-weight: 500;
+                    font-weight: 600;
                     color: #fff;
                     text-decoration: none;
                 }
