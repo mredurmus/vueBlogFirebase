@@ -1,20 +1,20 @@
 <template>
   <div class="home">
-    <BlogPost :post="welcomeScreen"/>
+    <BlogPost v-if="!user" :post="welcomeScreen"/>
     <BlogPost :post="post" v-for="(post,index) in sampleBlogPost" :key="index"/>
     <div class="blog-card-wrap">
       <div class="container">
-        <h3>View More Recent Blogs</h3>
+        <h3>View More Blogs</h3>
         <div class="blog-cards">
           <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
         </div>
       </div>
     </div>
-    <div class="updates">
+    <div v-if="!user"  class="updates">
       <div class="container">
-        <h2>Never miss a post. Register for your free account today!</h2>
-        <router-link class="router-button" to="#">
-          Register for DATP-Blog <Arrow class="arrow arrow-light"/>
+        <h2>Register for your free account now! Dont miss any new blog</h2>
+        <router-link class="router-button" :to="{name : 'Register'}">
+          Register for DATP Blog <Arrow class="arrow arrow-light"/>
         </router-link>
       </div>
     </div>
@@ -32,25 +32,20 @@ export default {
     return {
       welcomeScreen: {
         title: "Welcome",
-        blogPost: "For You 💖",
+        blogPost: "This is a sample text for blog",
         welcomeScreen: true,
-        photo: "lol",
+        photo: "welcome",
       },
       sampleBlogPost: [
         {
-          title: "This is a Filler Title!",
-          blogHTML: "This is a filler blog post title",
-          blogCoverPhoto: "beautiful-stories",
+          title: "Blog Title",
+          blogHTML: "This is a sample text for blog",
+          blogCoverPhoto: "1",
         },
         {
-          title: "This is a Filler Title2!",
-          blogHTML: "This is a filler blog post title",
-          blogCoverPhoto: "designed-for-everyone",
-        },
-        {
-          title: "This is a Filler Title3!",
-          blogHTML: "This is a filler blog post title",
-          blogCoverPhoto: "coding",
+          title: "Blog Title 2",
+          blogHTML: "This is a sample text for blog",
+          blogCoverPhoto: "2",
         },
       ],
     };
@@ -58,8 +53,11 @@ export default {
   computed: {
     sampleBlogCards() {
       return this.$store.state.sampleBlogCards
-    }
-  }
+    },
+    user() {
+            return this.$store.state.user;
+    },
+  },
 };
 </script>
 

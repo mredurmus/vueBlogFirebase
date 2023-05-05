@@ -21,15 +21,16 @@
                 </div>
             <div class="col-2">
                 <ul>
-                    <router-link class="link" to="{ name: 'home' }">Home</router-link>
-                    <router-link class="link" to="{ name: 'blogs' }">Blogs</router-link>
-                    <router-link v-if="user" class="link" to="{ name: 'newpost' }">Create Post</router-link>
-                    <router-link v-if="!user" class="link" to="{ name: 'login' }">Login/Register</router-link>
+                    <router-link class="link" :to="{name : 'Home'}">Home</router-link>
+                    <router-link class="link" :to="{name : 'Blogs'}">Blogs</router-link>
+                    <router-link class="link" to='#'>Create Post</router-link>
+                    <router-link v-if="!user" class="link" :to="{name : 'Login'}">Login/Register</router-link>
                 </ul>
             </div>
         </div>
     <div class="right">
         <p>Copyright 2023 All Rights Reserved</p>
+        <p>Bu proje Disiplinler Arası Tasarım Projesi için hazırlanmıştır.</p>
     </div>
 </div>
 </footer>
@@ -44,6 +45,11 @@ export default{
     name: "footer-vue",
     components: {
         youTube,instagram,twitter,linkedin
+    },
+    computed: {
+        user() {
+            return this.$store.state.user;
+        }
     },
 };
 </script>
