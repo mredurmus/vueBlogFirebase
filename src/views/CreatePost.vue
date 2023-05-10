@@ -1,5 +1,6 @@
 <template>
   <div class="create-post">
+    <BlogCoverPreview v-show="this.$store.state.blogPhotoPreview" />
     <Loading v-show="loading" />
     <div class="container">
       <div :class="{ invisible: !error }" class="err-message">
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import BlogCoverPreview from "../components/BlogCoverPreview";
 import Loading from "../components/Loading";
 import firebase from "firebase/app";
 import "firebase/storage";
@@ -52,6 +54,7 @@ export default {
     };
   },
   components: {
+    BlogCoverPreview,
     Loading,
   },
   methods: {
@@ -65,7 +68,6 @@ export default {
     openPreview() {
       this.$store.commit("openPhotoPreview");
     },
-
     imageHandler(file, Editor, cursorLocation, resetUploader) {
       const storageRef = firebase.storage().ref();
       const docRef = storageRef.child(`documents/blogPostPhotos/${file.name}`);
