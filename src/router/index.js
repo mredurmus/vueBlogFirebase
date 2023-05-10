@@ -5,6 +5,8 @@ import Blogs from "../views/Blogs.vue"
 import Login from "../views/Login.vue"
 import Register from "../views/Register.vue"
 import ForgotPassword from "../views/ForgotPassword.vue"
+import Profile from "../views/Profile.vue"
+import CreatePost from "../views/CreatePost.vue"
 
 Vue.use(VueRouter);
 
@@ -34,11 +36,19 @@ const routes = [
     }
   },
   {
-    path: "/forgotpassword",
+    path: "/forgot-password",
     name: "ForgotPassword",
     component: ForgotPassword,  
     meta: {
       title:'Forgot Password'
+    }
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,  
+    meta: {
+      title:'Profile'
     }
   },
   {
@@ -47,6 +57,14 @@ const routes = [
     component: Blogs,
     meta: {
       title:'Blogs'
+    }
+  },
+  {
+    path: "/create-post",
+    name: "CreatePost",
+    component: CreatePost,
+    meta: {
+      title:'Create Post'
     }
   },
 ];
