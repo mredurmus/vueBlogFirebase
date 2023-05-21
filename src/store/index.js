@@ -8,12 +8,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    sampleBlogCards: [
-      { blogTitle:"Blog #1", blogCoverPhoto: "stock-1", blogDate: "Mar 1,2023"},
-      { blogTitle:"Blog #2", blogCoverPhoto: "stock-2", blogDate: "Mar 3,2023"},
-      { blogTitle:"Blog #3", blogCoverPhoto: "stock-3", blogDate: "Mar 4,2023"},
-      { blogTitle:"Blog #4", blogCoverPhoto: "stock-4", blogDate: "Mar 5,2023"},
-    ],
+    blogPosts: [],
+    postLoaded: null,
     blogHTML: "Write your blog title here...",
     blogTitle: "",
     blogPhotoName: "",
@@ -28,6 +24,14 @@ export default new Vuex.Store({
     profileId: null,
     profileInitials: null,
     profileAdmin: null,
+  },
+  getters: {
+    blogPostsFeed(state) {
+      return state.blogPosts.slice(0, 2);
+    },
+    blogPostsCards(state) {
+      return state.blogPosts.slice(2, 6);
+    },
   },
   mutations: {
     newBlogPost(state, payload) {
@@ -47,6 +51,15 @@ export default new Vuex.Store({
     },
     toggleEditPost(state, payload) {
       state.editPost = payload;
+    },
+    setBlogState(state, payload) {
+      state.blogTitle = payload.blogTitle;
+      state.blogHTML = payload.blogHTML;
+      state.blogPhotoFileURL = payload.blogCoverPhoto;
+      state.blogPhotoName = payload.blogCoverPhotoName;
+    },
+    filterBlogPost(state, payload) {
+      state.blogPosts = state.blogPosts.filter(post => post.blogID !== payload);
     },
     updateUser(state, payload){
       state.user = payload;
@@ -80,6 +93,33 @@ export default new Vuex.Store({
       commit("setProfileInfo",dbResults);
       commit("setProfileInitials");
     },
+    async getPost({ state }) {
+      const dataBase = await db.collection("blogPosts").orderBy("date", "desc");
+      const dbResults = await dataBase.get();
+      dbResults.forEach((doc) => {
+        if (!state.blogPosts.some((post) => post.blogID === doc.id)) {
+          const data = {
+            blogID: doc.data().blogID,
+            blogHTML: doc.data().blogHTML,
+            blogCoverPhoto: doc.data().blogCoverPhoto,
+            blogTitle: doc.data().blogTitle,
+            blogDate: doc.data().date,
+            blogCoverPhotoName: doc.data().blogCoverPhotoName,
+          };
+          state.blogPosts.push(data);
+        }
+      });
+      state.postLoaded = true;
+    },
+    async updatePost({ commit, dispatch }, payload) {
+      commit("filterBlogPost", payload);
+      await dispatch("getPost");
+    },
+    async deletePost({commit}, payload){
+      const getPost = await db.collection('blogPosts').doc(payload);
+      await getPost.delete();
+      commit('filterBlogPost', payload);
+    },
     async updateUserSettings({commit, state}) {
       const dataBase = await db.collection('users').doc(state.profileId);
       await dataBase.update({
@@ -88,7 +128,7 @@ export default new Vuex.Store({
         username: state.profileUsername,
       });
       commit("setProfileInitials");
-    }
+    },
   },
   modules: {},
 })

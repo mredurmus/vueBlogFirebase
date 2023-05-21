@@ -5,9 +5,13 @@
       <h2>Account Settings</h2>
       <div class="profile-info">
         <div class="initials">{{ $store.state.profileInitials }}</div>
-        <div class="admin-badge">
+        <div v-if="admin" class="admin-badge">
           <adminIcon class="icon" />
           <span>admin</span>
+        </div>
+        <div v-if="!admin" class="admin-badge">
+          <userIcon class="icon" />
+          <span>User</span>
         </div>
         <div class="input">
           <label for="firstName">First Name:</label>
@@ -33,11 +37,13 @@
 <script>
 import Modal from "../components/Modal";
 import adminIcon from "../assets/Icons/user-crown-light.svg";
+import userIcon from '../assets/Icons/user-alt-light.svg';
 export default {
   name: "Profile",
   components: {
     Modal,
     adminIcon,
+    userIcon,
   },
   data() {
     return {
@@ -81,6 +87,12 @@ export default {
     },
     email() {
       return this.$store.state.profileEmail;
+    },
+    user() {
+            return this.$store.state.user;
+    },
+    admin() {
+            return this.$store.state.profileAdmin;
     },
   },
 };

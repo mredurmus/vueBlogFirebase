@@ -9,8 +9,12 @@ import Profile from "../views/Profile.vue"
 import CreatePost from "../views/CreatePost.vue"
 import BlogPreview from "../views/BlogPreview.vue"
 import ViewBlog from "../views/ViewBlog.vue"
+import EditBlog from "../views/EditBlog.vue"
+import firebase from "firebase/app"
+import "firebase/auth";
 
 Vue.use(VueRouter);
+
 
 const routes = [
   {
@@ -18,7 +22,8 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      title:'Home'
+      title:'Home',
+      requiresAuth:false,
     }
   },
   {
@@ -26,7 +31,8 @@ const routes = [
     name: "Login",
     component: Login,
     meta: {
-      title:'Login'
+      title:'Login',
+      requiresAuth:false,
     }
   },
   {
@@ -34,7 +40,8 @@ const routes = [
     name: "Register",
     component: Register,
     meta: {
-      title:'Register'
+      title:'Register',
+      requiresAuth:false,
     }
   },
   {
@@ -42,7 +49,8 @@ const routes = [
     name: "ForgotPassword",
     component: ForgotPassword,  
     meta: {
-      title:'Forgot Password'
+      title:'Forgot Password',
+      requiresAuth:false,
     }
   },
   {
@@ -50,7 +58,8 @@ const routes = [
     name: "Profile",
     component: Profile,  
     meta: {
-      title:'Profile'
+      title:'Profile',
+      requiresAuth:true,
     }
   },
   {
@@ -58,7 +67,8 @@ const routes = [
     name: "Blogs",
     component: Blogs,
     meta: {
-      title:'Blogs'
+      title:'Blogs',
+      requiresAuth:false,
     }
   },
   {
@@ -66,7 +76,8 @@ const routes = [
     name: "CreatePost",
     component: CreatePost,
     meta: {
-      title:'Create Post'
+      title:'Create Post',
+      requiresAuth:true,
     }
   },
   {
@@ -74,16 +85,27 @@ const routes = [
     name: "BlogPreview",
     component: BlogPreview,
     meta: {
-      title:'Preview Blog Post'
+      title:'Preview Blog Post',
+      requiresAuth:true,
     }
   },
   {
-    path: "/view-blog",
+    path: "/view-blog/:blogID",
     name: "ViewBlog",
     component: ViewBlog,
     meta: {
-      title:'View Blog Post'
-    }
+      title:'View Blog Post',
+      requiresAuth:false,
+    },
+  },
+  {
+    path: "/edit-blog/:blogID",
+    name: "EditBlog",
+    component: EditBlog,
+    meta: {
+      title:'Edit Blog Post',
+      requiresAuth:true,
+    },
   },
 ];
 
@@ -96,6 +118,17 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   document.title = `${to.meta.title} | DATP Blog ` ;
   next();
+});
+
+router.beforeEach(async (to, from, next) => {
+  let user = firebase.auth().currentUser;
+  if (to.matched.some((res) => res.meta.requiresAuth)) {
+    if (user) {
+      return next();
+    }
+    return next({ name: "Home" });
+  }
+  return next();
 });
 
 export default router;
