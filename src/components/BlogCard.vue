@@ -11,9 +11,9 @@
       <img :src="post.blogCoverPhoto" alt="">
       <div class="info">
           <h4>{{ post.blogTitle }}</h4>
-      <h6>Posted on: {{ new Date(post.blogDate).toLocaleString("en-us", { dateStyle: "long" }) }}</h6>
+      <h6>{{ new Date(post.blogDate).toLocaleString("en-us", { dateStyle: "long" }) }} tarihinde yayınlandı</h6>
       <router-link class="link" :to="{ name: 'ViewBlog', params: { blogID: this.post.blogID } }">
-        View The Post <Arrow class="arrow" />
+        Blogu Görüntüle <Arrow class="arrow" />
       </router-link>
       </div>
   </div>

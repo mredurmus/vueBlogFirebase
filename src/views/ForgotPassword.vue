@@ -5,18 +5,18 @@
       <div class="form-wrap">
         <form class="reset">
           <p class="login-register">
-            Back to
-            <router-link class="router-link" :to="{ name: 'Login' }">Login</router-link>
+            <router-link class="router-link" :to="{ name: 'Login' }">Giriş</router-link>
+            'e geri dön
           </p>
-          <h2>Reset Password</h2>
-          <p>Forgot your password? Enter your email to reset it</p>
+          <h2>Şifremi sıfırla</h2>
+          <p>Şifreni mi unuttun? Email'ini girerek sıfırlayabilirsin.</p>
           <div class="inputs">
             <div class="input">
               <input type="text" placeholder="Email" v-model="email" />
               <email class="icon" />
             </div>
           </div>
-          <button @click.prevent="resetPassword">Reset</button>
+          <button @click.prevent="resetPassword">Sıfırla</button>
           <div class="angle"></div>
         </form>
         <div class="background"></div>
@@ -48,7 +48,7 @@ export default {
         resetPassword() {
           this.loading = true;
           firebase.auth().sendPasswordResetEmail(this.email).then(() => {
-            this.modalMessage = "If your account exists, you will receive an email";
+            this.modalMessage = "Şifre sıfırlama bağlantısı, email'inize gönderildi.";
             this.loading = false;
             this.modalActive = true;
           })

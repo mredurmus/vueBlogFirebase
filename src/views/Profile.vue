@@ -2,34 +2,34 @@
     <div class="profile">
     <Modal v-if="modalActive" :modalMessage="modalMessage" v-on:close-modal="closeModal" />
     <div class="container">
-      <h2>Account Settings</h2>
+      <h2>Hesap Ayarları</h2>
       <div class="profile-info">
         <div class="initials">{{ $store.state.profileInitials }}</div>
         <div v-if="admin" class="admin-badge">
           <adminIcon class="icon" />
-          <span>admin</span>
+          <span>Yönetici</span>
         </div>
         <div v-if="!admin" class="admin-badge">
           <userIcon class="icon" />
-          <span>User</span>
+          <span>Kullanıcı</span>
         </div>
         <div class="input">
-          <label for="firstName">First Name:</label>
+          <label for="firstName">İsim:</label>
           <input type="text" id="firstName" v-model="firstName" />
         </div>
         <div class="input">
-          <label for="lastName">Last Name:</label>
+          <label for="lastName">Soyisim:</label>
           <input type="text" id="lastName" v-model="lastName" />
         </div>
         <div class="input">
-          <label for="username">Username:</label>
+          <label for="username">Kullanıcı Adı:</label>
           <input type="text" id="username" v-model="username" />
         </div>
         <div class="input">
           <label for="email">Email:</label>
           <input disabled type="text" id="email" v-model="email" />
         </div>
-        <button @click="updateProfile">Save Changes</button>
+        <button @click="updateProfile">Değişiklikleri kaydet</button>
       </div>
     </div>
   </div>

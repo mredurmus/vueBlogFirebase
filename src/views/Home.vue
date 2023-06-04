@@ -4,7 +4,7 @@
     <BlogPost :post="post" v-for="(post, index) in blogPostsFeed" :key="index" />
     <div class="blog-card-wrap">
       <div class="container">
-        <h3>View More Blogs</h3>
+        <h3>Daha fazla blog</h3>
         <div class="blog-cards">
           <BlogCard :post="post" v-for="(post, index) in blogPostsCards" :key="index" />
         </div>
@@ -12,9 +12,9 @@
     </div>
     <div v-if="!user"  class="updates">
       <div class="container">
-        <h2>Register for your free account now! Dont miss any new blog</h2>
+        <h2>Şimdi ücretsiz kaydol! Yeni blogları kaçırma</h2>
         <router-link class="router-button" :to="{name : 'Register'}">
-          Register for DATP Blog <Arrow class="arrow arrow-light"/>
+          DTP Blog'a kayıt ol <Arrow class="arrow arrow-light"/>
         </router-link>
       </div>
     </div>
@@ -31,8 +31,8 @@ export default {
   data () {
     return {
       welcomeScreen: {
-        title: "Welcome",
-        blogPost: "Welcome Text",
+        title: "Hoşgeldin !",
+        blogPost: "DTP BLOG'da Hiçbir Şeyi Kaçırma",
         welcomeScreen: true,
         photo: "welcome",
       },

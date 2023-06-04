@@ -3,7 +3,7 @@
         <div class="container">
             <div class="left">
                 <div class="col-1">
-                <router-link class="header" :to="{name : 'Home'}">DATP Blog</router-link>
+                <router-link class="header" :to="{name : 'Home'}">DTP Blog</router-link>
                 <ul>
                     <li>
                         <a href="#"><youTube class="svg-icon"/></a>
@@ -21,16 +21,16 @@
                 </div>
             <div class="col-2">
                 <ul>
-                    <router-link class="link" :to="{name : 'Home'}">Home</router-link>
-                    <router-link class="link" :to="{name : 'Blogs'}">Blogs</router-link>
-                    <router-link class="link" :to="{name : 'CreatePost'}">Create Post</router-link>
-                    <router-link v-if="!user" class="link" :to="{name : 'Login'}">Login/Register</router-link>
+                    <router-link class="link" :to="{name : 'Home'}">Ana Sayfa</router-link>
+                    <router-link class="link" :to="{name : 'Blogs'}">Bloglar</router-link>
+                    <router-link class="link" :to="{name : 'CreatePost'}">Blog Oluştur</router-link>
+                    <router-link v-if="!user" class="link" :to="{name : 'Login'}">Giriş Yap/Kayıt Ol</router-link>
                 </ul>
             </div>
         </div>
     <div class="right">
         <p>Copyright 2023 All Rights Reserved</p>
-        <p>Bu proje Disiplinler Arası Tasarım Projesi için hazırlanmıştır.</p>
+        <p>Bu proje Disiplinlerarası Tasarım Projesi için hazırlanmıştır.</p>
     </div>
 </div>
 </footer>

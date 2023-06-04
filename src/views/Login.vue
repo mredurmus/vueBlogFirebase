@@ -2,26 +2,26 @@
     <div class="form-wrap">
         <form class="login">
           <p class="login-register">
-                <router-link class="router-link" :to="{name:'Home'}">Back to Home Page</router-link>
+                <router-link class="router-link" :to="{name:'Home'}">Ana Sayfa'ya Dön</router-link>
             </p>
             <p class="login-register">
-                Don't have an account?
-                <router-link class="router-link" :to="{name:'Register'}">Register</router-link>
+                Bir hesabın yok mu ?
+                <router-link class="router-link" :to="{name:'Register'}">Kayıt Ol</router-link>
             </p>
-            <h2>Login to DATP Blogs</h2>
+            <h2>DTP Blog'a Giriş Yap</h2>
             <div class="inputs">
                 <div class="input">
                     <input type="text" placeholder="Email" v-model="email">
                     <email class="icon" />
                 </div>
                 <div class="input">
-                    <input type="password" placeholder="Password" v-model="password">
+                    <input type="password" placeholder="Şifre" v-model="password">
                     <password class="icon" />
                 </div>
                 <div v-show = "error" class="error">{{ this.errorMsg }}</div>
             </div>
-            <router-link class="forgot-password" :to="{name: 'ForgotPassword'}">Forgot your Password ?</router-link>
-            <button @click.prevent="signIn" >Sign In</button>
+            <router-link class="forgot-password" :to="{name: 'ForgotPassword'}">Şifreni mi unuttun ?</router-link>
+            <button @click.prevent="signIn" >Giriş Yap</button>
             <div class="angle"></div>
         </form>
         <div class="background"></div>

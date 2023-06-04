@@ -9,20 +9,20 @@
       <div class="blog-info">
         <input type="text" placeholder="Enter Blog Title" v-model="blogTitle" />
         <div class="upload-file">
-          <label for="blog-photo">Upload Cover Photo</label>
+          <label for="blog-photo">Kapak Fotoğrafı Ekle</label>
           <input type="file" ref="blogPhoto" id="blog-photo" @change="fileChange" accept=".png, .jpg, ,jpeg" />
           <button @click="openPreview" class="preview" :class="{ 'button-inactive': !this.$store.state.blogPhotoFileURL }">
-            Preview Photo
+            Fotoğrafı Önizle
           </button>
-          <span>File Chosen: {{ this.$store.state.blogPhotoName }}</span>
+          <span>Seçilen dosya: {{ this.$store.state.blogPhotoName }}</span>
         </div>
       </div>
       <div class="editor">
         <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler @image-added="imageHandler" />
       </div>
       <div class="blog-actions">
-        <button @click="updateBlog">Save Changes</button>
-        <router-link class="router-button" :to="{ name: 'BlogPreview' }">Preview Changes</router-link>
+        <button @click="updateBlog">Değişiklikleri kaydet</button>
+        <router-link class="router-button" :to="{ name: 'BlogPreview' }">Değişiklikleri Önizle</router-link>
       </div>
     </div>
   </div>

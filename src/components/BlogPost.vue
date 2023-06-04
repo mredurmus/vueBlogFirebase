@@ -7,10 +7,10 @@
                 <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
                 <p class="content-preview" v-else v-html="post.blogHTML"></p>
                 <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
-                    Login/Register<Arrow class="arrow arrow-light" />                
+                    Giriş Yap/Kayıt Ol<Arrow class="arrow arrow-light" />                
                 </router-link>
                 <router-link class="link" v-else :to="{name: 'ViewBlog', params: {blogID: this.post.blogID}}">
-                    View The Blog<Arrow class="arrow" />                
+                    Bloga Git<Arrow class="arrow" />                
                 </router-link>
             </div>
         </div>

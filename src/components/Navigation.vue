@@ -2,14 +2,14 @@
     <header>
         <nav class="container">
             <div class="branding">
-                <router-link class="header" :to="{name : 'Home'}">DATP Blog</router-link>
+                <router-link class="header" :to="{name : 'Home'}">DTP Blog</router-link>
             </div>
             <div class="nav-links">
                 <ul v-show="!mobile">
-                    <router-link class="link" :to="{name : 'Home'}">Home</router-link>
-                    <router-link class="link" :to="{name : 'Blogs'}">Blogs</router-link>
-                    <router-link v-if="admin" class="link" :to="{name : 'CreatePost'}">Create Post</router-link>
-                    <router-link v-if="!user" class="link" :to="{name : 'Login'}">Login/Register</router-link>
+                    <router-link class="link" :to="{name : 'Home'}">Ana Sayfa</router-link>
+                    <router-link class="link" :to="{name : 'Blogs'}">Bloglar</router-link>
+                    <router-link v-if="admin" class="link" :to="{name : 'CreatePost'}">Blog Oluştur</router-link>
+                    <router-link v-if="!user" class="link" :to="{name : 'Login'}">Giriş Yap/Kayıt Ol</router-link>
                 </ul>
                 <div v-if="user" @click="toggleProfileMenu" class="profile" ref="profile">
                     <span>{{ this.$store.state.profileInitials }}</span>
@@ -26,18 +26,18 @@
                             <div class="option">
                                 <router-link class="option" :to="{name : 'Profile'}">
                                     <userIcon class="icon"/>
-                                    <p>Profile</p>
+                                    <p>Profilim</p>
                                 </router-link>
                             </div>
                             <div v-if="admin" class="option">
                                 <router-link class="option" :to="{name : 'Admin'}">
                                     <adminIcon class="icon"/>
-                                    <p>Admin</p>
+                                    <p>Yönetici</p>
                                 </router-link>
                             </div>
                             <div @click="signOut" class="option">
                                     <signOutIcon class="icon"/>
-                                    <p>Sign Out</p>
+                                    <p>Çıkış Yap</p>
                             </div>
                         </div>
                     </div>
@@ -47,10 +47,10 @@
         <menuIcon @click="toggleMobileNav" class="menu-icon" v-show="mobile"/>
         <transition name="mobile-nav">
             <ul class="mobile-nav" v-show="mobileNav">
-                <router-link class="link" :to="{name : 'Home'}">Home</router-link>
-                <router-link class="link" :to="{name : 'Blogs'}">Blogs</router-link>
-                <router-link v-if="admin" class="link" :to="{name : 'CreatePost'}">Create Post</router-link>
-                <router-link v-if="!user" class="link" :to="{name : 'Login'}">Login/Register</router-link>
+                <router-link class="link" :to="{name : 'Home'}">Ana Sayfa</router-link>
+                <router-link class="link" :to="{name : 'Blogs'}">Bloglar</router-link>
+                <router-link v-if="admin" class="link" :to="{name : 'CreatePost'}">Blog Oluştur</router-link>
+                <router-link v-if="!user" class="link" :to="{name : 'Login'}">Giriş Yap/Kayıt Ol</router-link>
             </ul>
         </transition>
     </header>

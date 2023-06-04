@@ -2,20 +2,20 @@
     <div class="form-wrap">
         <form class="register">
             <p class="login-register">
-                <router-link class="router-link" :to="{name:'Home'}">Back to Home Page</router-link>
+                <router-link class="router-link" :to="{name:'Home'}">Ana Sayfa'ya dön</router-link>
             </p>
             <p class="login-register">
-                Already have an account?
-                <router-link class="router-link" :to="{name:'Login'}">Login</router-link>
+                Zaten bir hesabın var mı ?
+                <router-link class="router-link" :to="{name:'Login'}">Giriş Yap</router-link>
             </p>
-            <h2>Create your DATP-Blog account</h2>
+            <h2>DTP Blog'a kayıt ol</h2>
             <div class="inputs">
                 <div class="input">
-                    <input type="text" placeholder="First Name" v-model="firstName">
+                    <input type="text" placeholder="İsim" v-model="firstName">
                     <user class="icon" />
                 </div>
                 <div class="input">
-                    <input type="text" placeholder="Last Name" v-model="lastName">
+                    <input type="text" placeholder="Soyisim" v-model="lastName">
                     <user class="icon" />
                 </div>
                 <div class="input">
@@ -23,16 +23,16 @@
                     <user class="icon" />
                 </div>
                 <div class="input">
-                    <input type="text" placeholder="Username" v-model="username">
+                    <input type="text" placeholder="Kullanıcı Adı" v-model="username">
                     <email class="icon" />
                 </div>
                 <div class="input">
-                    <input type="password" placeholder="Password" v-model="password">
+                    <input type="password" placeholder="Şifre" v-model="password">
                     <password class="icon" />
                 </div>
                 <div v-show = "error" class="error">{{ this.errorMsg }}</div>
             </div>
-            <button @click.prevent="register">Sign Up</button>
+            <button @click.prevent="register">Kayıt Ol</button>
             <div class="angle"></div>
         </form>
         <div class="background"></div>
@@ -88,7 +88,7 @@ export default {
                 return;
             }
             this.error = true;
-            this.errorMsg = "Please fill out all the fields!";
+            this.errorMsg = "Lütfen tüm alanları doldurunuz!";
             return;
         }
     }

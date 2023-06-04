@@ -7,22 +7,22 @@
         <p><span>Error:</span>{{ this.errorMsg }}</p>
       </div>
       <div class="blog-info">
-        <input type="text" placeholder="Enter Blog Title" v-model="blogTitle" />
+        <input type="text" placeholder="Blog Başlığı giriniz" v-model="blogTitle" />
         <div class="upload-file">
-          <label for="blog-photo">Upload Cover Photo</label>
+          <label for="blog-photo">Kapak Fotoğrafı Ekle</label>
           <input type="file" ref="blogPhoto" id="blog-photo" @change="fileChange" accept=".png, .jpg, ,jpeg" />
           <button @click="openPreview" class="preview" :class="{ 'button-inactive': !this.$store.state.blogPhotoFileURL }">
-            Preview Photo
+            Fotoğrafı Önizle
           </button>
-          <span>File Chosen: {{ this.$store.state.blogPhotoName }}</span>
+          <span>Seçilen dosya: {{ this.$store.state.blogPhotoName }}</span>
         </div>
       </div>
       <div class="editor">
         <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler @image-added="imageHandler" />
       </div>
       <div class="blog-actions">
-        <button @click="uploadBlog">Publish Blog</button>
-        <router-link class="router-button" :to="{ name: 'BlogPreview' }">Post Preview</router-link>
+        <button @click="uploadBlog">Blog'u Yayınla</button>
+        <router-link class="router-button" :to="{ name: 'BlogPreview' }">Blog Önizleme</router-link>
       </div>
     </div>
   </div>
@@ -124,14 +124,14 @@ export default {
           return;
         }
         this.error = true;
-        this.errorMsg = "Please ensure you uploaded a cover photo!";
+        this.errorMsg = "Lütfen bir kapak fotoğrafı yüklediğinizden emin olun!";
         setTimeout(() => {
           this.error = false;
         }, 5000);
         return;
       }
       this.error = true;
-      this.errorMsg = "Please ensure Blog Title & Blog Post has been filled!";
+      this.errorMsg = "Lütfen blog başlığı ve içeriği girdiğinizden emin olun!";
       setTimeout(() => {
         this.error = false;
       }, 5000);

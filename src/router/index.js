@@ -22,7 +22,7 @@ const routes = [
     name: "Home",
     component: Home,
     meta: {
-      title:'Home',
+      title:'Ana Sayfa',
       requiresAuth:false,
     }
   },
@@ -31,7 +31,7 @@ const routes = [
     name: "Login",
     component: Login,
     meta: {
-      title:'Login',
+      title:'Giriş Yap',
       requiresAuth:false,
     }
   },
@@ -40,7 +40,7 @@ const routes = [
     name: "Register",
     component: Register,
     meta: {
-      title:'Register',
+      title:'Kayıt Ol',
       requiresAuth:false,
     }
   },
@@ -49,7 +49,7 @@ const routes = [
     name: "ForgotPassword",
     component: ForgotPassword,  
     meta: {
-      title:'Forgot Password',
+      title:'Şifremi Unuttum',
       requiresAuth:false,
     }
   },
@@ -58,7 +58,7 @@ const routes = [
     name: "Profile",
     component: Profile,  
     meta: {
-      title:'Profile',
+      title:'Profil',
       requiresAuth:true,
     }
   },
@@ -67,7 +67,7 @@ const routes = [
     name: "Blogs",
     component: Blogs,
     meta: {
-      title:'Blogs',
+      title:'Bloglar',
       requiresAuth:false,
     }
   },
@@ -76,7 +76,7 @@ const routes = [
     name: "CreatePost",
     component: CreatePost,
     meta: {
-      title:'Create Post',
+      title:'Blog Oluştur',
       requiresAuth:true,
     }
   },
@@ -85,7 +85,7 @@ const routes = [
     name: "BlogPreview",
     component: BlogPreview,
     meta: {
-      title:'Preview Blog Post',
+      title:'Blogu Önizle',
       requiresAuth:true,
     }
   },
@@ -94,7 +94,7 @@ const routes = [
     name: "ViewBlog",
     component: ViewBlog,
     meta: {
-      title:'View Blog Post',
+      title:'Blog Görüntüleme',
       requiresAuth:false,
     },
   },
@@ -103,7 +103,7 @@ const routes = [
     name: "EditBlog",
     component: EditBlog,
     meta: {
-      title:'Edit Blog Post',
+      title:'Blog Düzenleme',
       requiresAuth:true,
     },
   },
